@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b66katbspuywv"]
+[gd_scene load_steps=67 format=3 uid="uid://b66katbspuywv"]
 
 [ext_resource type="Script" path="res://SlashMan.gd" id="1_gxpwb"]
 [ext_resource type="Texture2D" uid="uid://dd3x5nyorqy8l" path="res://KnightBasic/Run/Knight_Run_dir8.png" id="2_r7yl1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ctdywhsjjfrr4" path="res://KnightBasic/Run/Knight_Run_dir4.png" id="4_kwriw"]
 [ext_resource type="Texture2D" uid="uid://bvv6yla5rtroy" path="res://KnightBasic/Run/Knight_Run_dir3.png" id="5_2etfn"]
 [ext_resource type="Texture2D" uid="uid://cf7s6j83xlvxo" path="res://KnightBasic/Run/Knight_Run_dir6.png" id="5_qrk5e"]
+[ext_resource type="Texture2D" uid="uid://d3odon3xnpsgo" path="res://KnightBasic/Run/Knight_Run_dir5.png" id="8_o5gmx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0y6yr"]
 radius = 0.80726
@@ -204,6 +205,38 @@ region = Rect2(0, 512, 256, 256)
 atlas = ExtResource("5_2etfn")
 region = Rect2(256, 512, 256, 256)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_02kmk"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw4gm"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6lax"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs47g"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f7by"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebnll"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccp01"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdbhl"]
+atlas = ExtResource("8_o5gmx")
+region = Rect2(256, 512, 256, 256)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3o6eb"]
 animations = [{
 "frames": [{
@@ -379,6 +412,35 @@ animations = [{
 "loop": true,
 "name": &"run_up_left",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02kmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw4gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6lax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs47g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f7by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebnll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccp01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdbhl")
+}],
+"loop": true,
+"name": &"run_up_right",
+"speed": 5.0
 }]
 
 [node name="SlashMan" type="CharacterBody3D"]
@@ -394,7 +456,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 pixel_size = 0.1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3o6eb")
-animation = &"run_down_left"
-frame_progress = 0.855374
+animation = &"run_up_right"
 
 [node name="Pivot" type="Node3D" parent="."]

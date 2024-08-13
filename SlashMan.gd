@@ -22,6 +22,7 @@ func handleAnimation(dirX, dirY):
 	if dirX > 0:
 		if dirY > 0:
 			print("Moving Down-Right")
+			$AnimatedSprite3D.animation = "run_up_right"
 		elif dirY < 0:
 			print("Moving Up-Right")
 		else:
