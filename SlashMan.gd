@@ -14,25 +14,48 @@ signal hit
 
 var target_velocity = Vector3.ZERO
 
+var is_attacking = false
+func start_attack():
+	is_attacking = true
+	print('attack')
+	$AnimatedSprite3D.animation = "attack_down"
+	$AnimatedSprite3D.play()
+	
+	# Use a timer to end the attack after a delay
+	var timer = get_tree().create_timer(1)  # Adjust this value to match your animation length
+	timer.connect("timeout", Callable(self, "end_attack"))
+	
+func end_attack():
+	is_attacking= false
+
 func handleAnimation(dirX, dirY):
+	
+	if is_attacking:
+		print("attack animation")
+		$AnimatedSprite3D.animation = "attack_down"
+		return
+	
 	if dirX == 0 and dirY == 0:
-		print("Idle")
+		$AnimatedSprite3D.animation = "idle"
 		return
 
 	if dirX > 0:
 		if dirY > 0:
 			print("Moving Down-Right")
-			$AnimatedSprite3D.animation = "run_up_right"
+			$AnimatedSprite3D.animation = "run_down_right"
 		elif dirY < 0:
 			print("Moving Up-Right")
+			$AnimatedSprite3D.animation = "run_up_right"
 		else:
 			print("Moving Right")
 			$AnimatedSprite3D.animation = "run_right"
 	elif dirX < 0:
 		if dirY > 0:
 			print("Moving Down-Left")
+			$AnimatedSprite3D.animation = "run_down_left"
 		elif dirY < 0:
 			print("Moving Up-Left")
+			
 		else:
 			print("Moving Left")
 			$AnimatedSprite3D.animation = "run_left"
@@ -68,11 +91,13 @@ func _physics_process(delta):
 		direction.z = direction.z - 1
 		
 	
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		start_attack()
+
 
 	#print(direction.x, direction.z)
 	handleAnimation(direction.x, direction.z)	
 		
-
 
 	# Prevent diagonal moving fast af
 	if direction != Vector3.ZERO:
@@ -91,8 +116,8 @@ func _physics_process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite3D.play()
-	else:
-		$AnimatedSprite3D.stop()
+	#else:
+		#$AnimatedSprite3D.stop()
 
 	# Moving the Character
 	velocity = target_velocity
