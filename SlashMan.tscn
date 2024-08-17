@@ -739,6 +739,7 @@ animations = [{
 
 [node name="SlashMan" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142203, 3.82367, -0.188766)
+collision_mask = 6
 script = ExtResource("1_gxpwb")
 
 [node name="CollisionShape3DHurtBox" type="CollisionShape3D" parent="."]

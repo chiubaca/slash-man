@@ -25,12 +25,16 @@ func start_attack():
 	for index in range(get_slide_collision_count()):
 		# We get one of the collisions with the player
 		var collision = get_slide_collision(index)
-		
-		print(collision.get_collider())
 
 		# If the collision is with ground
 		if collision.get_collider() == null:
 			continue
+			
+		if collision.get_collider().is_in_group("enemy"):
+			var enemy = collision.get_collider()
+			enemy.hit_by_player()
+			
+			
 	
 	# Use a timer to end the attack after a delay
 	var timer = get_tree().create_timer(1)  # Adjust this value to match your animation length
@@ -52,30 +56,30 @@ func handleAnimation(dirX, dirY):
 
 	if dirX > 0:
 		if dirY > 0:
-			print("Moving Down-Right")
+			#print("Moving Down-Right")
 			$AnimatedSprite3D.animation = "run_down_right"
 		elif dirY < 0:
-			print("Moving Up-Right")
+			#print("Moving Up-Right")
 			$AnimatedSprite3D.animation = "run_up_right"
 		else:
-			print("Moving Right")
+			#print("Moving Right")
 			$AnimatedSprite3D.animation = "run_right"
 	elif dirX < 0:
 		if dirY > 0:
-			print("Moving Down-Left")
+			#print("Moving Down-Left")
 			$AnimatedSprite3D.animation = "run_down_left"
 		elif dirY < 0:
 			print("Moving Up-Left")
 			
 		else:
-			print("Moving Left")
+			#print("Moving Left")
 			$AnimatedSprite3D.animation = "run_left"
 	else:
 		if dirY > 0:
-			print("Moving Down")
+			#print("Moving Down")
 			$AnimatedSprite3D.animation = "run_down"
 		else:
-			print("Moving Up")
+			#print("Moving Up")
 			$AnimatedSprite3D.animation = "run_up"
 
 

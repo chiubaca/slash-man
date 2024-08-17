@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://p74ec5lbnj0d"]
+[gd_scene load_steps=6 format=3 uid="uid://p74ec5lbnj0d"]
 
+[ext_resource type="Script" path="res://Enemy.gd" id="1_3djcp"]
 [ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://icon.svg" id="1_57uhc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qdyf"]
-size = Vector3(10.2247, 5.78424, 7.82233)
+size = Vector3(6.85967, 5.78424, 3.98131)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nth6w"]
 atlas = ExtResource("1_57uhc")
@@ -24,9 +25,10 @@ animations = [{
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32684, 10.3942)
 collision_layer = 2
 collision_mask = 7
+script = ExtResource("1_3djcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, 0.385597, 1.04004, -1.47826)
+transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, -0.205785, 1.10764, 0.00873852)
 shape = SubResource("BoxShape3D_3qdyf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
