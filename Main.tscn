@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://de5b7t0kpuwjq"]
+[gd_scene load_steps=5 format=3 uid="uid://de5b7t0kpuwjq"]
 
+[ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://Enemy.tscn" id="1_nlait"]
 [ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://SlashMan.tscn" id="1_nqej8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vmab"]
@@ -31,6 +32,8 @@ mesh = SubResource("BoxMesh_ij3my")
 [node name="SlashMan" parent="." instance=ExtResource("1_nqej8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356174, 2.13835, 1.37803)
 up_direction = Vector3(2.08165e-13, 1, 2.08165e-13)
+
+[node name="Enemy" parent="." instance=ExtResource("1_nlait")]
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(0.60972, 0.0922815, -0.787227, -0.0356625, 0.995388, 0.0890614, 0.791814, -0.0262281, 0.610198, 3.08947, 165.922, 353.632)

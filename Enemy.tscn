@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://p74ec5lbnj0d"]
+
+[ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://icon.svg" id="1_57uhc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qdyf"]
+size = Vector3(10.2247, 5.78424, 7.82233)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nth6w"]
+atlas = ExtResource("1_57uhc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibxjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nth6w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32684, 10.3942)
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, 0.385597, 1.04004, -1.47826)
+shape = SubResource("BoxShape3D_3qdyf")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.683312, 0.730127, 0, -0.730127, 0.683312, 0.0187213, 1.35549, 0)
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_ibxjk")
+animation = &"idle"

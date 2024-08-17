@@ -21,6 +21,17 @@ func start_attack():
 	$AnimatedSprite3D.animation = "attack_down"
 	$AnimatedSprite3D.play()
 	
+		# Iterate through all collisions that occurred this frame
+	for index in range(get_slide_collision_count()):
+		# We get one of the collisions with the player
+		var collision = get_slide_collision(index)
+		
+		print(collision.get_collider())
+
+		# If the collision is with ground
+		if collision.get_collider() == null:
+			continue
+	
 	# Use a timer to end the attack after a delay
 	var timer = get_tree().create_timer(1)  # Adjust this value to match your animation length
 	timer.connect("timeout", Callable(self, "end_attack"))
@@ -31,7 +42,7 @@ func end_attack():
 func handleAnimation(dirX, dirY):
 	
 	if is_attacking:
-		print("attack animation")
+		#print("attack animation")
 		$AnimatedSprite3D.animation = "attack_down"
 		return
 	
