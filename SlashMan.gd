@@ -14,7 +14,8 @@ signal hit
 
 var target_velocity = Vector3.ZERO
 
-var hit_box 
+@onready var hit_box = get_node('HitBox')
+
 
 var is_attacking = false
 func start_attack():
@@ -24,28 +25,17 @@ func start_attack():
 	$AnimatedSprite3D.animation = "attack_down"
 	$AnimatedSprite3D.play()
 	
+	var enemies_hit = hit_box.get_overlapping_bodies()
 	
-		# Iterate through all collisions that occurred this frame
-	for index in range(get_slide_collision_count()):
-		# We get one of the collisions with the player
-		var collision = get_slide_collision(index)
-		# If the collision is with ground
-		if collision.get_collider() == null:
-			continue
-			
-		if collision.get_collider().is_in_group("enemy"):
-			var enemy = collision.get_collider()
+	for enemy in enemies_hit:
+		if enemy.has_method("hit_by_player"):
 			enemy.hit_by_player()
-			
-			
+	
 	
 	# Use a timer to end the attack after a delay
 	var timer = get_tree().create_timer(1)  # Adjust this value to match your animation length
-	timer.connect("timeout", Callable(self, "end_attack"))
+	timer.connect("timeout", func(): is_attacking = false)
 	
-	
-func end_attack():
-	is_attacking = false
 	
 
 func handleAnimation(dirX, dirY):
@@ -92,12 +82,12 @@ func _physics_process(delta):
 	# We create a local variable to store the input direction
 	var direction = Vector3.ZERO
 	
-	hit_box = get_node('CollisionShape3DHitBox')
+
 	
-	if(is_attacking):
-		hit_box.disabled = false
-	else: 
-		hit_box.disabled = true
+	#if(is_attacking):
+		#hit_box.disabled = false
+	#else: 
+		#hit_box.disabled = true
 
 	
 	# We check for each move input and update the direction accordingly

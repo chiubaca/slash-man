@@ -16,9 +16,6 @@
 radius = 0.80726
 height = 3.55399
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gattq"]
-size = Vector3(4.60327, 2.07228, 3.50598)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uc2qh"]
 atlas = ExtResource("2_aecgb")
 region = Rect2(768, 0, 256, 256)
@@ -737,6 +734,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gattq"]
+size = Vector3(4.64697, 3.18848, 3.50598)
+
 [node name="SlashMan" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142203, 3.82367, -0.188766)
 collision_mask = 6
@@ -745,10 +745,6 @@ script = ExtResource("1_gxpwb")
 [node name="CollisionShape3DHurtBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438937, 3.91719, 0.0111527)
 shape = SubResource("CapsuleShape3D_0y6yr")
-
-[node name="CollisionShape3DHitBox" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, 0.457455, 5.45159, 3.45538)
-shape = SubResource("BoxShape3D_gattq")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -762,3 +758,10 @@ frame_progress = 0.673113
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitBox" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, 0.428028, 3.81609, 3.27067)
+shape = SubResource("BoxShape3D_gattq")

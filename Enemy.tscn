@@ -44,7 +44,7 @@ mesh = SubResource("QuadMesh_r5plv")
 surface_material_override/0 = SubResource("StandardMaterial3D_0l74d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, -0.205785, 1.10764, 0.00873852)
+transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, -0.205785, 2.16651, -0.0189981)
 shape = SubResource("BoxShape3D_3qdyf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
