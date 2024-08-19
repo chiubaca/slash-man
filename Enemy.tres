@@ -7,6 +7,5 @@ render_mode blend_mix, depth_draw_opaque, cull_front, diffuse_lambert_wrap, spec
 
 
 "
-graph_offset = Vector2(-25.0537, -102.489)
 modes/cull = 1
 modes/diffuse = 1

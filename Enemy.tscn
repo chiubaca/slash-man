@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://p74ec5lbnj0d"]
+[gd_scene load_steps=10 format=3 uid="uid://p74ec5lbnj0d"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_3djcp"]
 [ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://icon.svg" id="1_57uhc"]
+[ext_resource type="AudioStream" uid="uid://dfempjovxjhwy" path="res://assets/ow.mp3" id="3_6hqjm"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_r5plv"]
 size = Vector2(5, 5)
@@ -53,3 +54,6 @@ material_overlay = SubResource("ShaderMaterial_wb7w3")
 pixel_size = 0.04
 sprite_frames = SubResource("SpriteFrames_ibxjk")
 animation = &"idle"
+
+[node name="OwAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6hqjm")
