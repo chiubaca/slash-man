@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://de5b7t0kpuwjq"]
+[gd_scene load_steps=7 format=3 uid="uid://de5b7t0kpuwjq"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_2itd2"]
 [ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://Enemy.tscn" id="1_nlait"]
 [ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://SlashMan.tscn" id="1_nqej8"]
+[ext_resource type="PackedScene" uid="uid://bia42yfk53m2c" path="res://HUD.tscn" id="3_mm7al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vmab"]
 size = Vector3(60, 3.1, 60)
@@ -10,6 +12,7 @@ size = Vector3(60, 3.1, 60)
 size = Vector3(60, 0.1, 60)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_2itd2")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 4
@@ -52,3 +55,5 @@ transform = Transform3D(0.60972, 0.0922815, -0.787227, -0.0356625, 0.995388, 0.0
 transform = Transform3D(0.590664, -0.341538, 0.731073, 0.116916, 0.93267, 0.341257, -0.798402, -0.116094, 0.590827, -245.952, -140.259, -205.103)
 projection = 1
 size = 27.4694
+
+[node name="HUD" parent="." instance=ExtResource("3_mm7al")]

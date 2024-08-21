@@ -31,7 +31,6 @@ func start_attack():
 		if enemy.has_method("hit_by_player"):
 			enemy.hit_by_player()
 	
-	
 	# Use a timer to end the attack after a delay
 	var timer = get_tree().create_timer(1)  # Adjust this value to match your animation length
 	timer.connect("timeout", func(): is_attacking = false)
