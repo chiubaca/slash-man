@@ -13,7 +13,7 @@ config_version=5
 config/name="Knight Man"
 config/description="he is a knight "
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://entities/Enemy/icon.svg"
+config/icon="res://KnightBoy.png"
 
 [autoload]
 
