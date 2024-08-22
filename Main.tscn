@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://de5b7t0kpuwjq"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_2itd2"]
-[ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://Enemy.tscn" id="1_nlait"]
-[ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://SlashMan.tscn" id="1_nqej8"]
+[ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://entities/Enemy/Enemy.tscn" id="1_nlait"]
+[ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://entities/KnightMan/KnightMan.tscn" id="1_nqej8"]
 [ext_resource type="PackedScene" uid="uid://bia42yfk53m2c" path="res://HUD.tscn" id="3_mm7al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vmab"]
@@ -34,7 +34,7 @@ shape = SubResource("BoxShape3D_1vmab")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_ij3my")
 
-[node name="SlashMan" parent="." instance=ExtResource("1_nqej8")]
+[node name="KnightMan" parent="." instance=ExtResource("1_nqej8")]
 
 [node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("1_nlait")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7502, 1.48655, -16.5408)
