@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://de5b7t0kpuwjq"]
+[gd_scene load_steps=6 format=3 uid="uid://de5b7t0kpuwjq"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_2itd2"]
 [ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://entities/Enemy/Enemy.tscn" id="1_nlait"]
 [ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://entities/KnightMan/KnightMan.tscn" id="1_nqej8"]
 [ext_resource type="PackedScene" uid="uid://bia42yfk53m2c" path="res://HUD.tscn" id="3_mm7al"]
@@ -12,7 +11,6 @@ size = Vector3(60, 3.1, 60)
 size = Vector3(60, 0.1, 60)
 
 [node name="Main" type="Node"]
-script = ExtResource("1_2itd2")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 4

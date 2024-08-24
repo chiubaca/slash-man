@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Knight Man"
 config/description="he is a knight "
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://KnightBoy.png"
 
