@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 signal hit
 
-
 # How fast the player moves in meters per second
 @export var speed = 24
 # The downward acceleration while in the air, in meters per second squared.
@@ -20,7 +19,6 @@ var target_velocity = Vector3.ZERO
 
 
 func _ready() -> void:
-	print("ready...",state_machine)
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	state_machine.init(self)
