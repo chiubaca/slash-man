@@ -4,81 +4,64 @@ extends State
 var idle_state: State
 
 
-func handleAnimation() -> void:
-	
+func handle_animation() -> void:
 	parent.animations.play()
+	parent.animations.animation = get_animation_name_from_current_direction()
 
-	if parent.direction.x > 0:
-		if parent.direction.z > 0:
-			#parent.animations.play("run_down_right")
-			parent.animations.animation = "run_down_right"
-		elif parent.direction.z < 0:
-			#parent.animations.play("run_up_right")
-			parent.animations.animation = "run_up_right"
-		else:
-			#parent.animations.play("run_right")
-			parent.animations.animation = "run_right"
-	elif parent.direction.x < 0:
-		if parent.direction.z > 0:
-			#parent.animations.play("run_down_left")
-			parent.animations.animation = "run_down_left"
-		elif parent.direction.z < 0:
-			#parent.animations.play("run_up_left")
-			parent.animations.animation = "run_up_left"
-		else:
-			#parent.animations.play("run_left")
-			parent.animations.animation = "run_left"
+func get_animation_name_from_current_direction() -> String:
+	var x = parent.direction.x
+	var z = parent.direction.z
+	
+	if x > 0:
+		if z > 0: return "run_down_right"
+		elif z < 0: return "run_up_right"
+		else: return "run_right"
+	elif x < 0:
+		if z > 0: return "run_down_left"
+		elif z < 0: return "run_up_left"
+		else: return "run_left"
 	else:
-		if parent.direction.z > 0:
-			#parent.animations.play("run_down")
-			parent.animations.animation = "run_down"
-		else:
-			#parent.animations.play("run_up")
-			parent.animations.animation = "run_up"
+		if z > 0: return "run_down"
+		else: return "run_up"
 
-
-func process_physics(delta: float) -> State:
+# set directions based on inputs 
+func set_direction_from_inputs() -> void:
+	
+	parent.direction = Vector3.ZERO
 	
 	if Input.is_action_pressed("move_right"):
-		print('right')
-		parent.direction.x = parent.direction.x + 1
-		
+		parent.direction.x += 1
 	elif Input.is_action_pressed("move_left"):
-		print('left')
-		parent.direction.x = parent.direction.x - 1
-		
-	elif Input.is_action_pressed("move_back"):
-		print('down')
-		parent.direction.z = parent.direction.z + 1
-		
+		parent.direction.x -= 1
+	
+	if Input.is_action_pressed("move_back"):
+		parent.direction.z += 1
 	elif Input.is_action_pressed("move_forward"):
-		print('up')
-		parent.direction.z = parent.direction.z - 1
-	else:
-		parent.direction.z = 0
-		parent.direction.x = 0
-		return idle_state
+		parent.direction.z -= 1
 	
-	
-	handleAnimation()
-	
-	
-	# Prevent diagonal moving fast af
-	if parent.direction != Vector3.ZERO:
-		parent.direction = parent.direction.normalized()
-	
+	parent.direction = parent.direction.normalized()
+
+func apply_movement(delta: float) -> void:
 	# Ground Velocity
 	parent.target_velocity.x = parent.direction.x * parent.speed
 	parent.target_velocity.z = parent.direction.z * parent.speed
 	
 	# Vertical Velocity
-	if not parent.is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		parent.target_velocity.y = parent.target_velocity.y - (parent.fall_acceleration * delta)
+	if not parent.is_on_floor():
+		parent.target_velocity.y -= parent.fall_acceleration * delta
 	
-	if parent.velocity.length() > 0:
-		parent.velocity = parent.velocity.normalized() * parent.speed
-	
-	# Moving the Character
 	parent.velocity = parent.target_velocity
-	parent.move_and_slide()	
-	return self	
+	parent.move_and_slide()
+
+func process_physics(delta: float) -> State:
+
+	set_direction_from_inputs()
+	
+	if parent.direction == Vector3.ZERO:
+		return idle_state
+
+	handle_animation()
+	
+	apply_movement(delta)
+	
+	return self
