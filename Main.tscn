@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://de5b7t0kpuwjq"]
+[gd_scene load_steps=10 format=3 uid="uid://de5b7t0kpuwjq"]
 
 [ext_resource type="PackedScene" uid="uid://p74ec5lbnj0d" path="res://entities/Enemy/Enemy.tscn" id="1_nlait"]
 [ext_resource type="PackedScene" uid="uid://b66katbspuywv" path="res://entities/KnightMan/KnightMan.tscn" id="1_nqej8"]
 [ext_resource type="PackedScene" uid="uid://bia42yfk53m2c" path="res://HUD.tscn" id="3_mm7al"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_nk4r3"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_y00wh"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="7_hy6kx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vmab"]
-size = Vector3(60, 3.1, 60)
+size = Vector3(60, 0.1, 60)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ij3my"]
 size = Vector3(60, 0.1, 60)
+
+[sub_resource type="Resource" id="Resource_r3hda"]
+script = ExtResource("7_hy6kx")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [node name="Main" type="Node"]
 
@@ -46,12 +61,21 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743273, 10.4305)
 collision_mask = 0
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.60972, 0.0922815, -0.787227, -0.0356625, 0.995388, 0.0890614, 0.791814, -0.0262281, 0.610198, 3.08947, 165.922, 353.632)
-
-[node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(0.590664, -0.341538, 0.731073, 0.116916, 0.93267, 0.341257, -0.798402, -0.116094, 0.590827, -245.952, -140.259, -205.103)
-projection = 1
-size = 27.4694
-
 [node name="HUD" parent="." instance=ExtResource("3_mm7al")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.831169, 0.55602, 0, -0.55602, 0.831169, -0.142203, 15.3797, 25.6424)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("4_nk4r3")
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 0.831169, 0.55602, 0, -0.55602, 0.831169, -0.142203, 15.3797, 25.6424)
+script = ExtResource("5_y00wh")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../KnightMan")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_r3hda")
+follow_offset = Vector3(2.08165e-12, 11, 25)
+follow_damping = true
