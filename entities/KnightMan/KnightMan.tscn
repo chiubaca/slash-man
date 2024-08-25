@@ -17,8 +17,8 @@
 [ext_resource type="Script" path="res://entities/KnightMan/states/Attack.gd" id="15_3esgl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0y6yr"]
-radius = 0.80726
-height = 3.55399
+radius = 0.707596
+height = 5.65476
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uc2qh"]
 atlas = ExtResource("2_c6sjm")
@@ -755,11 +755,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 pixel_size = 0.1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3o6eb")
-animation = &"attack_down"
+animation = &"run_down_left"
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="HitBox" type="Area3D" parent="."]
+visible = false
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
