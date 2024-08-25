@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://b66katbspuywv"]
+[gd_scene load_steps=114 format=3 uid="uid://b66katbspuywv"]
 
 [ext_resource type="Script" path="res://entities/KnightMan/KnightMan.gd" id="1_gxpwb"]
 [ext_resource type="Texture2D" uid="uid://ccnlo6o4xgtg4" path="res://entities/KnightMan/assets/Attack/Knight_Attack_dir8.png" id="2_c6sjm"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cpfwgvxdgsk6" path="res://custom_nodes/StateMachine.tscn" id="12_pqmnt"]
 [ext_resource type="Script" path="res://entities/KnightMan/states/Idle.gd" id="13_rt6hc"]
 [ext_resource type="Script" path="res://entities/KnightMan/states/Run.gd" id="14_g3qpg"]
+[ext_resource type="Script" path="res://entities/KnightMan/states/Attack.gd" id="15_3esgl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0y6yr"]
 radius = 0.80726
@@ -444,7 +445,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t86a0")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_down",
 "speed": 14.0
 }, {
@@ -754,7 +755,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 pixel_size = 0.1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3o6eb")
-animation = &"idle"
+animation = &"attack_down"
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -768,10 +769,15 @@ shape = SubResource("BoxShape3D_gattq")
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("12_pqmnt")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "attack_state")]
 script = ExtResource("13_rt6hc")
 run_state = NodePath("../Run")
+attack_state = NodePath("../Attack")
 
 [node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("14_g3qpg")
+idle_state = NodePath("../Idle")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("15_3esgl")
 idle_state = NodePath("../Idle")
