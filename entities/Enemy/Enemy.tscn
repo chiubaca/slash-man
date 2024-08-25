@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/Enemy/Enemy.gd" id="1_3djcp"]
 [ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://entities/Enemy/icon.svg" id="2_ef3u7"]
-[ext_resource type="AudioStream" uid="uid://dfempjovxjhwy" path="res://assets/ow.mp3" id="3_6hqjm"]
+[ext_resource type="AudioStream" uid="uid://dfempjovxjhwy" path="res://entities/Enemy/assets/ow.mp3" id="3_6hqjm"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_r5plv"]
 size = Vector2(5, 5)

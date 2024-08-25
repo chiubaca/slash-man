@@ -12,6 +12,8 @@ signal hit
 var animations = $AnimatedSprite3D
 @onready 
 var state_machine = $StateMachine
+@onready 
+var hit_box: Area3D = $HitBox
 
 var direction = Vector3.ZERO
 

@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 var mesh
 
-@export var life = 2
+@export var life = 100
 
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 func hit_by_player():
 	mesh.visible = true
 	get_tree().create_timer(0.5).timeout.connect(func(): mesh.visible = false)
-	#$OwAudio.play()
+	$OwAudio.play()
 	print('ow you hit me')
 	life -= 1
 	
