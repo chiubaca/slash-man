@@ -1,3 +1,3 @@
 extends Node
 
-signal hit_enemy(points:int)
+signal add_points(points:int)

@@ -17,14 +17,14 @@ func hit_by_player():
 	life -= 1
 	
 	if(life == 0):
-		GlobalSignal.hit_enemy.emit(10)
+		GlobalSignal.add_points.emit(10)
 		get_tree().create_timer(0.2).timeout.connect(func(): queue_free())
 		return 
 		
-	GlobalSignal.hit_enemy.emit(5)
+	GlobalSignal.add_points.emit(5)
 
 
 func _on_hurt_box_area_entered(area):
-	print('enemy something went in me', area)
+	print('enemy was hit!', area)
 	hit_by_player()
 	pass # Replace with function body.

@@ -4,12 +4,12 @@ var score = 0
 
 func _on_score_tree_entered():
 	print("_on_score_tree_entered")
-	GlobalSignal.hit_enemy.connect(update_score)
+	GlobalSignal.add_points.connect(update_score)
 
 
 func _on_score_tree_exiting():
 	print("_on_score_tree_exiting")
-	GlobalSignal.hit_enemy.disconnect(update_score)
+	GlobalSignal.add_points.disconnect(update_score)
 	
 
 func update_score(points):
