@@ -739,7 +739,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gattq"]
-size = Vector3(4.64697, 3.18848, 3.50598)
+size = Vector3(2.31183, 2.30632, 3.46829)
 
 [node name="KnightMan" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142203, 3.82367, -0.188766)
@@ -760,11 +760,11 @@ animation = &"run_down_left"
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="HitBox" type="Area3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282497, -0.202145, 0.0186958)
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, 0.428028, 3.81609, 3.27067)
+transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, -0.989415, 4.40852, 0.394928)
 shape = SubResource("BoxShape3D_gattq")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("12_pqmnt")]
