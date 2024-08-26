@@ -6,10 +6,10 @@
 script = ExtResource("1_idjbh")
 
 [node name="Health" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 946.0
-offset_right = 578.0
-offset_bottom = 1041.0
+offset_left = 1337.0
+offset_top = 974.0
+offset_right = 1899.0
+offset_bottom = 1069.0
 theme_override_font_sizes/font_size = 69
 text = "Health: 100"
 
