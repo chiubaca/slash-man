@@ -7,7 +7,7 @@ var mesh
 
 
 func _ready():
-	mesh = get_node('MeshInstance3D')
+	mesh = get_node('DamageInidicator')
 	mesh.visible = false  
 
 func hit_by_player():
@@ -23,3 +23,8 @@ func hit_by_player():
 		return 
 		
 	GlobalSignal.hit_enemy.emit(5)
+
+
+func _on_hit_box_area_entered(area):
+	print('enemy something went in me', area)
+	pass # Replace with function body.

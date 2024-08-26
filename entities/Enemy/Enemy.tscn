@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://p74ec5lbnj0d"]
+[gd_scene load_steps=11 format=3 uid="uid://p74ec5lbnj0d"]
 
 [ext_resource type="Script" path="res://entities/Enemy/Enemy.gd" id="1_3djcp"]
 [ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://entities/Enemy/icon.svg" id="2_ef3u7"]
 [ext_resource type="AudioStream" uid="uid://dfempjovxjhwy" path="res://entities/Enemy/assets/ow.mp3" id="3_6hqjm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8kl1a"]
+size = Vector3(7.79476, 6.44586, 5.10059)
 
 [sub_resource type="QuadMesh" id="QuadMesh_r5plv"]
 size = Vector2(5, 5)
@@ -39,7 +42,17 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_3djcp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 7
+monitoring = false
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00295448, 2.72293, -0.0117188)
+shape = SubResource("BoxShape3D_8kl1a")
+
+[node name="DamageInidicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.991483, -0.066301, -0.112097, 0.127228, 0.677031, 0.724874, 0.0278332, -0.732962, 0.6797, -0.0145191, 1.23804, 0.124613)
 mesh = SubResource("QuadMesh_r5plv")
 surface_material_override/0 = SubResource("StandardMaterial3D_0l74d")
@@ -57,3 +70,5 @@ animation = &"idle"
 
 [node name="OwAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6hqjm")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
