@@ -1,18 +1,17 @@
 extends CharacterBody3D
 
-
-var mesh
+@onready
+var damage_indicator = $'DamageInidicator'
 
 @export var life = 100
 
 
 func _ready():
-	mesh = get_node('DamageInidicator')
-	mesh.visible = false  
+	damage_indicator.visible = false  
 
 func hit_by_player():
-	mesh.visible = true
-	get_tree().create_timer(0.5).timeout.connect(func(): mesh.visible = false)
+	damage_indicator.visible = true
+	get_tree().create_timer(0.5).timeout.connect(func(): damage_indicator.visible = false)
 	$OwAudio.play()
 	print('ow you hit me')
 	life -= 1
