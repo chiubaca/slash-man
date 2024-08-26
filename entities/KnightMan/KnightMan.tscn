@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ctdywhsjjfrr4" path="res://entities/KnightMan/assets/Run/Knight_Run_dir4.png" id="9_bo86r"]
 [ext_resource type="Texture2D" uid="uid://bvv6yla5rtroy" path="res://entities/KnightMan/assets/Run/Knight_Run_dir3.png" id="10_vvkfj"]
 [ext_resource type="Texture2D" uid="uid://d3odon3xnpsgo" path="res://entities/KnightMan/assets/Run/Knight_Run_dir5.png" id="11_atff4"]
-[ext_resource type="PackedScene" uid="uid://cpfwgvxdgsk6" path="res://custom_nodes/StateMachine.tscn" id="12_pqmnt"]
+[ext_resource type="PackedScene" uid="uid://cpfwgvxdgsk6" path="res://custom_nodes/StateMachine/StateMachine.tscn" id="12_pqmnt"]
 [ext_resource type="Script" path="res://entities/KnightMan/states/Idle.gd" id="13_rt6hc"]
 [ext_resource type="Script" path="res://entities/KnightMan/states/Run.gd" id="14_g3qpg"]
 [ext_resource type="Script" path="res://entities/KnightMan/states/Attack.gd" id="15_3esgl"]
@@ -746,7 +746,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142203, 3.82367, -0.188766
 collision_mask = 6
 script = ExtResource("1_gxpwb")
 
-[node name="CollisionShape3DHurtBox" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438937, 3.91719, 0.0111527)
 shape = SubResource("CapsuleShape3D_0y6yr")
 
@@ -756,8 +756,6 @@ pixel_size = 0.1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3o6eb")
 animation = &"run_down_left"
-
-[node name="Pivot" type="Node3D" parent="."]
 
 [node name="HitBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282497, -0.202145, 0.0186958)
