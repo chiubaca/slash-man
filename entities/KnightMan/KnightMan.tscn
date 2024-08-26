@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://b66katbspuywv"]
+[gd_scene load_steps=115 format=3 uid="uid://b66katbspuywv"]
 
 [ext_resource type="Script" path="res://entities/KnightMan/KnightMan.gd" id="1_gxpwb"]
 [ext_resource type="Texture2D" uid="uid://ccnlo6o4xgtg4" path="res://entities/KnightMan/assets/Attack/Knight_Attack_dir8.png" id="2_c6sjm"]
@@ -741,6 +741,10 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_gattq"]
 size = Vector3(2.31183, 2.30632, 3.46829)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8aq8m"]
+radius = 1.1607
+height = 6.13019
+
 [node name="KnightMan" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142203, 3.82367, -0.188766)
 collision_mask = 6
@@ -764,6 +768,15 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, -0.989415, 4.40852, 0.394928)
 shape = SubResource("BoxShape3D_gattq")
+
+[node name="HurtBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62181, -0.0880933)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 0.999933, 0.0115364, 0, -0.0115364, 0.999933, 0, 0.236979, -0.247392)
+shape = SubResource("CapsuleShape3D_8aq8m")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("12_pqmnt")]
 starting_state = NodePath("Idle")
