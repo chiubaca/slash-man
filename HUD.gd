@@ -21,4 +21,4 @@ func update_score(points):
 
 func update_health(damage):
 	health = health - damage
-	$Health.text = "health:" + str(health)
+	$Health.text = "Health:" + str(health)
