@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready
 var damage_indicator = $'DamageInidicator'
 
-@export var life = 100
+@export var life = 5
 
 
 func _ready():
@@ -24,6 +24,7 @@ func hit_by_player():
 	GlobalSignal.hit_enemy.emit(5)
 
 
-func _on_hit_box_area_entered(area):
+func _on_hurt_box_area_entered(area):
 	print('enemy something went in me', area)
+	hit_by_player()
 	pass # Replace with function body.

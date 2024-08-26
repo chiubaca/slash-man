@@ -788,8 +788,8 @@ animation = &"run_down_left"
 
 [node name="HitBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282497, -0.202145, 0.0186958)
-visible = false
-collision_mask = 3
+collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(-0.0212566, 0, -0.999774, 0, 1, 0, 0.999774, 0, -0.0212566, -0.989415, 4.40852, 0.394928)

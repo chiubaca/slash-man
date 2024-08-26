@@ -21,11 +21,11 @@ func process_physics(delta: float) -> State:
 	#new_scale.z = min(new_scale.z, max_scale)
 	parent.hit_box.scale = new_scale
 	
-	var enemies_hit = parent.hit_box.get_overlapping_bodies()
-	for enemy in enemies_hit:
-		if enemy.has_method("hit_by_player"):
-			enemy.hit_by_player()
-			
+	#var enemies_hit = parent.hit_box.get_overlapping_bodies()
+	#for enemy in enemies_hit:
+		#if enemy.has_method("hit_by_player"):
+			#enemy.hit_by_player()
+			#
 	
 	if not parent.animations.is_playing():
 		return idle_state

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p74ec5lbnj0d"]
+[gd_scene load_steps=12 format=3 uid="uid://p74ec5lbnj0d"]
 
 [ext_resource type="Script" path="res://entities/Enemy/Enemy.gd" id="1_3djcp"]
 [ext_resource type="Texture2D" uid="uid://3iv1i1tnicfh" path="res://entities/Enemy/icon.svg" id="2_ef3u7"]
@@ -17,7 +17,7 @@ no_depth_test = true
 albedo_color = Color(1, 0.235294, 0.266667, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qdyf"]
-size = Vector3(6.85967, 5.78424, 3.98131)
+size = Vector3(5.10982, 4.50687, 3.98131)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wb7w3"]
 
@@ -35,6 +35,9 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wugu7"]
+size = Vector3(7.45764, 5.42883, 6.41113)
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32684, 10.3942)
@@ -58,7 +61,7 @@ mesh = SubResource("QuadMesh_r5plv")
 surface_material_override/0 = SubResource("StandardMaterial3D_0l74d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, -0.205785, 2.16651, -0.0189981)
+transform = Transform3D(1, 0, 0, 0, 0.998968, 0.0454153, 0, -0.0454153, 0.998968, -0.0327136, 1.52848, 0.0100079)
 shape = SubResource("BoxShape3D_3qdyf")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -71,4 +74,12 @@ animation = &"idle"
 [node name="OwAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6hqjm")
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.317078, 2.21442, -0.932129)
+shape = SubResource("BoxShape3D_wugu7")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
