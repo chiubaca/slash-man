@@ -5,6 +5,14 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_idjbh")
 
+[node name="Health" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 946.0
+offset_right = 578.0
+offset_bottom = 1041.0
+theme_override_font_sizes/font_size = 69
+text = "Health: 100"
+
 [node name="Score" type="Label" parent="."]
 offset_top = 4.0
 offset_right = 228.0
@@ -12,5 +20,7 @@ offset_bottom = 78.0
 theme_override_font_sizes/font_size = 69
 text = "YOUR SCORE IS:0"
 
+[connection signal="tree_entered" from="Health" to="." method="_on_score_tree_entered"]
+[connection signal="tree_exiting" from="Health" to="." method="_on_score_tree_exiting"]
 [connection signal="tree_entered" from="Score" to="." method="_on_score_tree_entered"]
 [connection signal="tree_exiting" from="Score" to="." method="_on_score_tree_exiting"]

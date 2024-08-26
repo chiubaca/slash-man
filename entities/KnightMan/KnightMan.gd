@@ -42,5 +42,6 @@ func _on_hurt_box_area_entered(hitbox):
 	damage_indicator.visible = true
 	get_tree().create_timer(0.5).timeout.connect(func(): damage_indicator.visible = false)
 	print('I got hurt!', hitbox)
+	GlobalSignal.reduce_player_health.emit(10)
 	pass # Replace with function body.
 
